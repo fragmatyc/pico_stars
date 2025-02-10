@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Comparaison des palettes PNG vs PAL</title>
+  <style>
+    body { font-family: sans-serif; }
+    .palette { display: flex; margin-bottom: 20px; }
+    .swatch {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 12px;
+      color: #333;
+      border: 1px solid #666;
+      box-sizing: border-box;
+      margin-right: 5px;
+    }
+    .title { margin-bottom: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="title">Palette extraite du PNG (ImageMagick)</div>
+  <div class="palette">
+    <!-- Les codes hexadécimaux sont tels que rapportés par ImageMagick -->
+    <div class="swatch" style="background-color: #000000;">0</div>
+    <div class="swatch" style="background-color: #D4B1A1;">1</div>
+    <div class="swatch" style="background-color: #FDE5D9;">2</div>
+    <div class="swatch" style="background-color: #F0D6CA;">3</div>
+    <div class="swatch" style="background-color: #A39696;">4</div>
+    <div class="swatch" style="background-color: #F6EEEA;">5</div>
+    <div class="swatch" style="background-color: #6C3727;">6</div>
+    <div class="swatch" style="background-color: #CA946A;">7</div>
+    <div class="swatch" style="background-color: #A04B2D;">8</div>
+    <div class="swatch" style="background-color: #E5682A;">9</div>
+    <div class="swatch" style="background-color: #FF9D29;">10</div>
+    <div class="swatch" style="background-color: #FFD2AD;">11</div>
+    <div class="swatch" style="background-color: #FFE830;">12</div>
+    <div class="swatch" style="background-color: #FFF757;">13</div>
+    <div class="swatch" style="background-color: #FFFFFF;">14</div>
+  </div>
+
+  <div class="title">Palette extraite du fichier PAL (SNES 15‑bits converti)</div>
+  <div class="palette">
+    <!-- Les 15 premières entrées du fichier PAL, converties en 24‑bits, donnent quasiment les mêmes valeurs -->
+    <div class="swatch" style="background-color: #000000;">0</div>
+    <div class="swatch" style="background-color: #D4B1A1;">1</div>
+    <div class="swatch" style="background-color: #FDE5D9;">2</div>
+    <div class="swatch" style="background-color: #F0D6CA;">3</div>
+    <div class="swatch" style="background-color: #A39696;">4</div>
+    <div class="swatch" style="background-color: #F6EEEA;">5</div>
+    <div class="swatch" style="background-color: #6C3727;">6</div>
+    <div class="swatch" style="background-color: #CA946A;">7</div>
+    <div class="swatch" style="background-color: #A04B2D;">8</div>
+    <div class="swatch" style="background-color: #E5682A;">9</div>
+    <div class="swatch" style="background-color: #FF9D29;">10</div>
+    <div class="swatch" style="background-color: #FFD2AD;">11</div>
+    <div class="swatch" style="background-color: #FFE830;">12</div>
+    <div class="swatch" style="background-color: #FFF757;">13</div>
+    <div class="swatch" style="background-color: #FFFFFF;">14</div>
+    <!-- La 16ème entrée (index 15) du fichier PAL est 0x0000 → noir, mais n'est pas utilisée -->
+  </div>
+</body>
+</html>

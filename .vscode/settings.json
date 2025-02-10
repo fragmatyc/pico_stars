@@ -1,0 +1,26 @@
+{
+    "files.associations": {
+        "unit.h": "c",
+        "tower.h": "c",
+        "cavemap.h": "c",
+        "spawner.h": "c",
+        "minion.h": "c",
+        "projectile.h": "c",
+        "utils.h": "c",
+        "snes.h": "c",
+        "minionpool.h": "c",
+        "human.h": "c",
+        "unit_projectile.h": "c",
+        "grenade.h": "c",
+        "spell.h": "c",
+        "player.h": "c",
+        "sprite.h": "c",
+        "object_manager.h": "c",
+        "sprite_manager.h": "c",
+        "titlescreen.h": "c",
+        "player_initializer.h": "c",
+        "player_manager.h": "c",
+        "spell_initializer.h": "c",
+        "spell_manager.h": "c"
+    }
+}

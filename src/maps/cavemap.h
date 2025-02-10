@@ -1,0 +1,22 @@
+#ifndef CAVE_MAP_H
+#define CAVE_MAP_H
+
+#define PLAYER1_START_X 128
+#define PLAYER1_START_Y 96
+
+#define PLAYER1_TOWER1_X 64
+#define PLAYER1_TOWER1_Y 48
+
+#define PLAYER1_TOWER2_X 64
+#define PLAYER1_TOWER2_Y 160
+
+#define PLAYER1_SPAWNER_X 64
+#define PLAYER1_SPAWNER_Y 104
+#define PLAYER1_SPAWNER_SPAWN_RATE 1800
+
+#define PLAYER2_SPAWNER_X 240
+#define PLAYER2_SPAWNER_Y 104
+
+void initCaveMap();
+
+#endif

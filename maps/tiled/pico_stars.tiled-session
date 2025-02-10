@@ -1,0 +1,46 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "cave.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 4
+        },
+        "cave.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 35,
+                "y": 140.75
+            }
+        },
+        "cave.tmx#cave_tileset": {
+            "scaleInDock": 5.5
+        }
+    },
+    "last.exportedFilePath": "C:/snesdev/workspace/pico_stars/maps",
+    "last.imagePath": "C:/snesdev/workspace/pico_stars/maps",
+    "map.height": 28,
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 128,
+    "openFiles": [
+        "cave.tmx"
+    ],
+    "project": "pico_stars.tiled-project",
+    "recentFiles": [
+        "cave.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    }
+}
