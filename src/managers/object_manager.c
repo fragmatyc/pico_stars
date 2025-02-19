@@ -26,6 +26,7 @@ void registerSpell(u8 teamId, u8 spellIdx, struct spell_t *spell, struct object_
 void registerPlayer(u8 teamId, struct player_t *player, struct object_manager_t *objManager) {
     player->objectId = nextObjectId(objManager);
     player->sprite->oamId = nextOamId(objManager);
+    player->statusSprite->oamId = nextOamId(objManager);
 
     player->unit->healthBarSprite->oamId = nextOamId(objManager);
     player->unit->teamId = teamId;

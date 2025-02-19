@@ -18,11 +18,15 @@ bool isCastingSpell(struct player_t *player) {
         isSpellInitializedAndCasting(player->rSpell);
 }
 
+bool isImmobilized(struct player_t *player) {
+    return player->status == PLAYER_STATUS_FROZEN;
+}
+
 void handlePlayerMovements(struct object_manager_t *objManager) {
     u8 playerIdx;
     for (playerIdx = 0; playerIdx < 2; playerIdx++) {
         struct player_t *player = objManager->players[playerIdx];
-        if (player == NULL || player->sprite->visible == 0 || isCastingSpell(player)) {
+        if (player == NULL || player->sprite->visible == 0 || isCastingSpell(player) || isImmobilized(player)) {
             continue;
         }
 
@@ -91,26 +95,26 @@ void animateStaticZoneClose(struct spell_t *spell, bool animationLoopComplete) {
 }
 
 void animateExplosion(struct spell_t *spell, bool animationLoopComplete) {
-    if (spell->travelDistance >= spell->maxTravelDistance && spell->sprite->frameOffset == 48 && animationLoopComplete) {
+    if (spell->travelDistance >= spell->maxTravelDistance && spell->sprite->frameOffset == 512 && animationLoopComplete) {
         spell->sprite->visible = 0; 
         spell->sprite->frameIdx = 0;
         spell->sprite->frameOffset = spell->sprite->frameOffsetOrig;
         spell->sprite->size = spell->sprite->sizeOrig;
         spell->sprite->palette = spell->sprite->paletteOrig;
         spell->sprite->totalNbAnimFrame = spell->sprite->totalNbAnimFrameOrig;
-    } else if (spell->travelDistance >= spell->maxTravelDistance && spell->sprite->frameOffset != 48) {
+    } else if (spell->travelDistance >= spell->maxTravelDistance && spell->sprite->frameOffset != 512) {
         //spcPlaySound(0);
         spell->sprite->frameIdx = 0;
         spell->sprite->framesPerFrame = 10;
         spell->sprite->frameCounter = 0;
         spell->sprite->frameOffsetOrig = spell->sprite->frameOffset;
-        spell->sprite->frameOffset = 48;
+        spell->sprite->frameOffset = 512;
         spell->sprite->totalNbAnimFrameOrig = spell->sprite->totalNbAnimFrame;
         spell->sprite->totalNbAnimFrame = 4;
         spell->sprite->sizeOrig = spell->sprite->size;
         spell->sprite->size = OBJ_LARGE;
         spell->sprite->paletteOrig = spell->sprite->palette;
-        spell->sprite->palette = 3;
+        spell->sprite->palette = 5;
         spell->sprite->x -= 8;
         spell->sprite->y -= 8;
     }
@@ -172,6 +176,7 @@ void animateSpell(struct player_t *player, struct spell_t *spell, struct object_
 
         switch (spell->type) {
             case SPELL_TYPE_THROWN:
+            case SPELL_TYPE_THROWN_SKILLSHOT:
             case SPELL_TYPE_THROWN_EXPLOSION:
                 animateThrownSpell(spell, animationLoopComplete);
                 break;
@@ -201,6 +206,40 @@ void animateSpells(struct player_t *player, struct object_manager_t *objManager)
     animateSpell(player, player->aSpell, objManager);
     animateSpell(player, player->bSpell, objManager);
     animateSpell(player, player->xSpell, objManager);
+}
+
+void handlePlayerStatus(struct object_manager_t *objManager) {
+    u8 playerIdx;
+    for (playerIdx = 0; playerIdx < 2; playerIdx++) {
+        struct player_t *player = objManager->players[playerIdx];
+        if (player == NULL || player->sprite->visible == 0) {
+            continue;
+        }
+
+        if (player->statusTimer > 0) {
+            player->statusTimer--;
+        }
+
+        if (player->statusTimer > 0) {
+            if (player->status == PLAYER_STATUS_FROZEN) {
+                player->statusSprite->x = player->sprite->x;
+                player->statusSprite->y = player->sprite->x;
+                player->statusSprite->visible = 1;
+                player->statusSprite->initialized = 1;
+                player->statusSprite->frameOffset = 384;
+                player->statusSprite->frameIdx = 0;
+                player->statusSprite->palette = 7;
+                player->statusSprite->totalNbAnimFrame = 1;
+                player->statusSprite->flipX = 0;
+                player->statusSprite->flipY = 0;
+                player->statusSprite->priority = 3;
+                player->statusSprite->size = OBJ_SMALL;
+            }
+        } else {
+            player->status = PLAYER_STATUS_NORMAL;
+            player->statusSprite->visible = 0;
+        }
+    }
 }
 
 void handlePlayerSpells(struct object_manager_t *objManager) {

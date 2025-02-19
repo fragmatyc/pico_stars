@@ -9,7 +9,9 @@
 
 // Human
 #define HUMAN_FRAME_OFFSET 0
+#define MAGE_FRAME_OFFSET 0
 #define HUMAN_PALETTE 1
+#define MAGE_PALETTE 1
 #define HUMAN_MOVE_SPEED 1
 #define HUMAN_MOVE_FRAME_COUNT 1
 #define HUMAN_FRAMES_PER_FRAME 10
@@ -32,9 +34,7 @@ void initHumanSprite(struct player_t *player) {
     sprite->size = OBJ_SMALL;
     sprite->totalNbAnimFrame = HUMAN_ANIM_FRAME_COUNT;
     sprite->framesPerFrame = HUMAN_FRAMES_PER_FRAME;
-    sprite->frameOffset = HUMAN_FRAME_OFFSET;
-    sprite->priority = PLAYER_SPRITE_PRIORITY;
-    sprite->palette = HUMAN_PALETTE;
+    sprite->priority = 2;
     sprite->initialized = 1;
 }
 
@@ -57,14 +57,33 @@ void initHuman(struct player_t *player) {
 
 void initMageUnit(struct player_t *player) {
     struct unit_t *unit = player->unit;
+    unit->level = 1;
+    unit->moveSpeed = HUMAN_MOVE_SPEED;
+    unit->moveFrameCount = HUMAN_MOVE_FRAME_COUNT;
+    unit->maxHealthPoints = 800;
+    unit->healthPoints = 54;
 }
 
 void initMageSprite(struct player_t *player) {
     struct sprite_t *sprite = player->sprite;
+    sprite->flipX = 0;
+    sprite->flipY = 0;
+    sprite->frameIdx = 0;
+    sprite->size = OBJ_SMALL;
+    sprite->totalNbAnimFrame = HUMAN_ANIM_FRAME_COUNT;
+    sprite->framesPerFrame = HUMAN_FRAMES_PER_FRAME;
+    sprite->priority = PLAYER_SPRITE_PRIORITY;
+    sprite->palette = MAGE_PALETTE;
+    sprite->initialized = 1;
 }
 
 void initMageSpells(struct player_t *player) {
-
+    initMageXSpell(player->xSpell, player->unit->teamId);
+    initMageYSpell(player->ySpell, player->unit->teamId);
+    initMageASpell(player->aSpell, player->unit->teamId);
+    initMageBSpell(player->bSpell, player->unit->teamId);
+    initMageLSpell(player->lSpell, player->unit->teamId);
+    initMageRSpell(player->rSpell, player->unit->teamId);
 }
 
 void initMage(struct player_t *player) {

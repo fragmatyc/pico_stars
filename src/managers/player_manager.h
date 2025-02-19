@@ -5,5 +5,6 @@
 
 void handlePlayerMovements(struct object_manager_t *objManager);
 void handlePlayerSpells(struct object_manager_t *objManager);
+void handlePlayerStatus(struct object_manager_t *objManager);
 
 #endif

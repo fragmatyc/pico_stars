@@ -21,6 +21,7 @@
         "player_initializer.h": "c",
         "player_manager.h": "c",
         "spell_initializer.h": "c",
-        "spell_manager.h": "c"
+        "spell_manager.h": "c",
+        "sprite_initializer.h": "c"
     }
 }

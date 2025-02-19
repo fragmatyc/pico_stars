@@ -80,14 +80,14 @@ towershot_brr_end:
 
 .section ".rodata2" superfree
 
-// SPRITES - fireball
-fireballsprite:
-.incbin "gfx/sprites/fireball.pic"
-fireballsprite_end:
+// SPRITES - iceball
+iceballsprite:
+.incbin "gfx/sprites/iceball.pic"
+iceballsprite_end:
 
-fireballspritepal:
-.incbin "gfx/sprites/fireball.pal"
-// SPRITES - fireball - END
+iceballspritepal:
+.incbin "gfx/sprites/iceball.pal"
+// SPRITES - iceball - END
 
 // SPRITES - healthbar
 healthbarsprite:
@@ -133,5 +133,23 @@ missilesprite_end:
 missilespritepal:
 .incbin "gfx/sprites/missile.pal"
 // SPRITES - missile - END
+
+// SPRITES - mage
+magesprite:
+.incbin "gfx/sprites/mage.pic"
+magesprite_end:
+
+magespritepal:
+.incbin "gfx/sprites/mage.pal"
+// SPRITES - mage - END
+
+// SPRITES - playerstatuses
+playerstatusessprite:
+.incbin "gfx/sprites/playerstatuses.pic"
+playerstatusessprite_end:
+
+playerstatusesspritepal:
+.incbin "gfx/sprites/playerstatuses.pal"
+// SPRITES - playerstatuses - END
 
 .ends

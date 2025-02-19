@@ -39,6 +39,7 @@ void handlePlayerSpritesDisplay(struct object_manager_t *objManager) {
             continue;
         }
         
+        displaySprite(player->statusSprite);
         displaySprite(player->sprite);
 
         displaySprite(player->xSpell->sprite);

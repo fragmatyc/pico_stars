@@ -65,7 +65,7 @@ void castSpell(u8 casterObjId, struct spell_t *spell, struct object_manager_t *o
     struct unit_t *casterUnit = getObjectUnit(casterObjId, objManager);
 
     switch(spell->type) {
-        case SPELL_TYPE_THROWN:
+        case SPELL_TYPE_THROWN_SKILLSHOT:
         case SPELL_TYPE_THROWN_EXPLOSION:
         case SPELL_TYPE_STATIC_CLOSE_ZONE:
             castThrownSpell(casterSprite, casterUnit, spell);
